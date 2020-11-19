@@ -8,6 +8,7 @@ const sidebarReducer = (state = initialState, action) => {
     const newState = { ...state };
     switch (action.type) {
         case TOGGLE_SIDEBAR_STATUS:
+            newState.sidebarIsOpened = action.isOpened;
             return newState;
 
         default:

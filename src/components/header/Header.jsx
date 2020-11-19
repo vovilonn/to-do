@@ -21,8 +21,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
 }));
-function Header() {
+const Header = ({ toggleSidebar }) => {
     const classes = useStyles();
+
+    const toggleDrawer = () => (event) => {
+        if (
+            event.type === "keydown" &&
+            (event.key === "Tab" || event.key === "Shift")
+        ) {
+            return;
+        }
+        toggleSidebar(true);
+    };
 
     return (
         <AppBar position="static">
@@ -32,6 +42,7 @@ function Header() {
                     className={classes.menuButton}
                     color="inherit"
                     aria-label="menu"
+                    onClick={toggleDrawer()}
                 >
                     <MenuIcon />
                 </IconButton>
@@ -49,6 +60,6 @@ function Header() {
             </Toolbar>
         </AppBar>
     );
-}
+};
 
 export default Header;
