@@ -1,4 +1,3 @@
-import React from "react";
 import {
     Dialog,
     DialogTitle,
@@ -27,16 +26,40 @@ const SignInModal = ({
     updateSignInUserNameText,
     updateSignInPasswordText,
     updateSignInRepeatedPassword,
+    newUserNameText,
+    newPasswordText,
+    newRepeatedPasswordText,
+    addAccount,
 }) => {
     const classes = useStyles();
 
     const toggleModalOpened = (isOpened) => () => {
         toggleModalStatus(isOpened);
+        updateSignInUserNameText("");
+        updateSignInPasswordText("");
+        updateSignInRepeatedPassword("");
     };
 
     const updateUserNameText = (e) => {
         const newText = e.target.value;
         updateSignInUserNameText(newText);
+    };
+
+    const updatePasswordText = (e) => {
+        const newText = e.target.value;
+        updateSignInPasswordText(newText);
+    };
+
+    const updateRepeatedPasswordText = (e) => {
+        const newText = e.target.value;
+        updateSignInRepeatedPassword(newText);
+    };
+
+    const signIn = () => {
+        if (newPasswordText === newRepeatedPasswordText) {
+            addAccount(newUserNameText, newPasswordText);
+            toggleModalOpened(false)();
+        }
     };
 
     return (
@@ -58,6 +81,7 @@ const SignInModal = ({
                     variant="outlined"
                     className={classes.userNameField}
                     onChange={updateUserNameText}
+                    value={newUserNameText}
                 />
                 <TextField
                     margin="dence"
@@ -66,6 +90,8 @@ const SignInModal = ({
                     fullWidth
                     variant="outlined"
                     className={classes.passwordField}
+                    onChange={updatePasswordText}
+                    value={newPasswordText}
                 />
                 <TextField
                     margin="dence"
@@ -73,10 +99,12 @@ const SignInModal = ({
                     type="password"
                     fullWidth
                     variant="outlined"
+                    onChange={updateRepeatedPasswordText}
+                    value={newRepeatedPasswordText}
                 />
                 <DialogActions>
                     <Button onClick={toggleModalOpened(false)}>Cancel</Button>
-                    <Button onClick={toggleModalOpened(false)}>Sign In</Button>
+                    <Button onClick={signIn}>Sign In</Button>
                 </DialogActions>
             </DialogContent>
         </Dialog>

@@ -24,6 +24,7 @@ const LogInModal = ({
     updateLogInCurrentPasswordText,
     newUserNameText,
     newPasswordText,
+    updateCurrentAccount,
 }) => {
     const classes = useStyles();
 
@@ -41,6 +42,11 @@ const LogInModal = ({
     const updateCurrentPasswordText = (e) => {
         const newText = e.target.value;
         updateLogInCurrentPasswordText(newText);
+    };
+
+    const logIn = () => {
+        updateCurrentAccount(newUserNameText, newPasswordText);
+        toggleModalOpened(false)();
     };
 
     return (
@@ -76,7 +82,7 @@ const LogInModal = ({
                 />
                 <DialogActions>
                     <Button onClick={toggleModalOpened(false)}>Cancel</Button>
-                    <Button onClick={toggleModalOpened(false)}>Log In</Button>
+                    <Button onClick={logIn}>Log In</Button>
                 </DialogActions>
             </DialogContent>
         </Dialog>

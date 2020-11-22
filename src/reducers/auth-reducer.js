@@ -1,5 +1,5 @@
 import {
-    LOG_IN,
+    ADD_ACCOUNT,
     TOGGLE_LOGIN_MODAL_STATUS,
     TOGGLE_SIGNIN_MODAL_STATUS,
     UPDATE_LOGIN_CURRENT_USERNAME_TEXT,
@@ -7,6 +7,7 @@ import {
     UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
     UPDATE_SIGNIN_CURRENT_PASSWORD_TEXT,
     UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT,
+    LOG_IN,
 } from "./actions";
 import { getStateFromDB } from "../dataBase";
 
@@ -29,6 +30,7 @@ const initialState = getStateFromDB().accounts || {
         },
     ],
     currentAccount: {
+        logined: false,
         userName: "tempUser",
         password: "",
     },
@@ -36,12 +38,11 @@ const initialState = getStateFromDB().accounts || {
 
 const authReducer = (state = initialState, action) => {
     let newState = { ...state };
-    // newState.logInModal = { ...state.logInModal };
-    // newState.signInModal = { ...state.signInModal };
-    switch (action.type) {
-        case LOG_IN:
-            return newState;
+    newState.logInModal = { ...state.logInModal };
+    newState.signInModal = { ...state.signInModal };
+    newState.accounts = [...state.accounts];
 
+    switch (action.type) {
         case TOGGLE_LOGIN_MODAL_STATUS:
             newState.logInModalIsOpened = action.isOpened;
             return newState;
@@ -68,6 +69,27 @@ const authReducer = (state = initialState, action) => {
 
         case UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT:
             newState.signInModal.currentRepeatedPasswordText = action.newText;
+            return newState;
+
+        case ADD_ACCOUNT:
+            const newUser = {
+                userName: action.userName,
+                password: action.password,
+            };
+            newState.accounts.push(newUser);
+            return newState;
+
+        case LOG_IN:
+            newState.accounts.forEach((user) => {
+                if (
+                    action.userName === user.userName &&
+                    action.password === user.password
+                ) {
+                    newState.currentAccount.userName = user.userName;
+                    newState.currentAccount.password = user.password;
+                    newState.currentAccount.logined = true;
+                }
+            });
             return newState;
 
         default:

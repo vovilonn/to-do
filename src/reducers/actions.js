@@ -6,15 +6,6 @@ export const toggleSidebarStatus = (open) => {
     };
 };
 
-export const LOG_IN = "LOG-IN";
-export const logIn = (userName, password) => {
-    return {
-        type: LOG_IN,
-        userName: userName,
-        password: password,
-    };
-};
-
 export const TOGGLE_LOGIN_MODAL_STATUS = "TOGGLE-LOGIN-MODAL-STATUS";
 export const toggleLogInModalStatus = (isOpened) => {
     return {
@@ -62,7 +53,7 @@ export const UPDATE_SIGNIN_CURRENT_PASSWORD_TEXT =
     "UPDATE-SIGNIN-CURRENT-PASSWORD-TEXT";
 export const updateSignInCurrentPasswordText = (text) => {
     return {
-        type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
+        type: UPDATE_SIGNIN_CURRENT_PASSWORD_TEXT,
         newText: text,
     };
 };
@@ -71,7 +62,25 @@ export const UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT =
     "UPDATE-SIGNIN-CURRENT-REPEAT-PASSWORD-TEXT";
 export const updateSignInCurrentRepeatedPasswordText = (text) => {
     return {
-        type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
+        type: UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT,
         newText: text,
+    };
+};
+
+export const ADD_ACCOUNT = "ADD_ACCOUNT";
+export const addAccount = (userName, password) => {
+    return {
+        type: ADD_ACCOUNT,
+        userName: userName,
+        password: password,
+    };
+};
+
+export const LOG_IN = "LOG-IN";
+export const logIn = (userName, password) => {
+    return {
+        type: LOG_IN,
+        userName: userName,
+        password: password,
     };
 };

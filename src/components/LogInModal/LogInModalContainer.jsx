@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import {
+    logIn,
     toggleLogInModalStatus,
     updateLogInCurrentPasswordText,
     updateLogInCurrentUserNameText,
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updateLogInCurrentPasswordText: (text) => {
             dispatch(updateLogInCurrentPasswordText(text));
+        },
+        updateCurrentAccount: (userName, password) => {
+            dispatch(logIn(userName, password));
         },
     };
 };

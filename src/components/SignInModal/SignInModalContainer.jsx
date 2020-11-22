@@ -4,12 +4,17 @@ import {
     updateSignInCurrentUserNameText,
     updateSignInCurrentPasswordText,
     updateSignInCurrentRepeatedPasswordText,
+    addAccount,
 } from "../../reducers/actions";
 import SignInModal from "./SignInModal";
 
 const mapStateToProps = (state) => {
     return {
         isOpened: state.accounts.signInModalIsOpened,
+        newUserNameText: state.accounts.signInModal.currentUserNameText,
+        newPasswordText: state.accounts.signInModal.currentPasswordText,
+        newRepeatedPasswordText:
+            state.accounts.signInModal.currentRepeatedPasswordText,
     };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -25,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updateSignInRepeatedPassword: (newText) => {
             dispatch(updateSignInCurrentRepeatedPasswordText(newText));
+        },
+        addAccount: (userName, password) => {
+            dispatch(addAccount(userName, password));
         },
     };
 };
