@@ -30,3 +30,48 @@ export const toggleSignInModalStatus = (isOpened) => {
         isOpened: isOpened,
     };
 };
+
+export const UPDATE_LOGIN_CURRENT_USERNAME_TEXT =
+    "UPDATE-LOGIN-CURRENT-USERNAME-TEXT";
+export const updateLogInCurrentUserNameText = (text) => {
+    return {
+        type: UPDATE_LOGIN_CURRENT_USERNAME_TEXT,
+        newText: text,
+    };
+};
+
+export const UPDATE_LOGIN_CURRENT_PASSWORD_TEXT =
+    "UPDATE-LOGIN-CURRENT-PASSWORD-TEXT";
+export const updateLogInCurrentPasswordText = (text) => {
+    return {
+        type: UPDATE_LOGIN_CURRENT_PASSWORD_TEXT,
+        newText: text,
+    };
+};
+
+export const UPDATE_SIGNIN_CURRENT_USERNAME_TEXT =
+    "UPDATE-SIGNIN-CURRENT-USERNAME-TEXT";
+export const updateSignInCurrentUserNameText = (text) => {
+    return {
+        type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
+        newText: text,
+    };
+};
+
+export const UPDATE_SIGNIN_CURRENT_PASSWORD_TEXT =
+    "UPDATE-SIGNIN-CURRENT-PASSWORD-TEXT";
+export const updateSignInCurrentPasswordText = (text) => {
+    return {
+        type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
+        newText: text,
+    };
+};
+
+export const UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT =
+    "UPDATE-SIGNIN-CURRENT-REPEAT-PASSWORD-TEXT";
+export const updateSignInCurrentRepeatPasswordText = (text) => {
+    return {
+        type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
+        newText: text,
+    };
+};

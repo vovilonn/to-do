@@ -8,6 +8,15 @@ import { getStateFromDB } from "../dataBase";
 const initialState = getStateFromDB().accounts || {
     logInModalIsOpened: false,
     signInModalIsOpened: false,
+    logInModal: {
+        currentUserNameText: "",
+        currentPasswordText: "",
+    },
+    signInModal: {
+        currentUserNameText: "",
+        currentPasswordText: "",
+        currentRepeatPasswordText: "",
+    },
     accounts: [
         {
             userName: "vovilonn",
