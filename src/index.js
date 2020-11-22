@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux-store";
 import { Provider } from "react-redux";
+import { updateDB } from "./dataBase";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,3 +16,5 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById("root")
 );
+
+store.subscribe(updateDB);

@@ -16,9 +16,12 @@ const useStyles = makeStyles((theme) => {
             marginTop: theme.spacing(3),
             marginBottom: theme.spacing(2.5),
         },
+        passwordField: {
+            marginBottom: theme.spacing(2.5),
+        },
     };
 });
-const LogInModal = ({ isOpened, toggleModalStatus }) => {
+const SignInModal = ({ isOpened, toggleModalStatus }) => {
     const classes = useStyles();
 
     const toggleModalOpened = (isOpened) => () => {
@@ -31,9 +34,9 @@ const LogInModal = ({ isOpened, toggleModalStatus }) => {
             onClose={toggleModalOpened(false)}
             aria-labelledby="form-dialog-title"
         >
-            <DialogTitle id="form-dialog-title">Log In</DialogTitle>
+            <DialogTitle id="form-dialog-title">Sign In</DialogTitle>
             <DialogContent>
-                <DialogContentText>Log In to add to do</DialogContentText>
+                <DialogContentText>Sign In to add to do</DialogContentText>
                 <TextField
                     autoFocus
                     margin="dence"
@@ -46,19 +49,26 @@ const LogInModal = ({ isOpened, toggleModalStatus }) => {
                 />
                 <TextField
                     margin="dence"
-                    id="pass"
                     label="Password"
+                    type="password"
+                    fullWidth
+                    variant="outlined"
+                    className={classes.passwordField}
+                />
+                <TextField
+                    margin="dence"
+                    label="Repeat password"
                     type="password"
                     fullWidth
                     variant="outlined"
                 />
                 <DialogActions>
                     <Button onClick={toggleModalOpened(false)}>Cancel</Button>
-                    <Button onClick={toggleModalOpened(false)}>Log In</Button>
+                    <Button onClick={toggleModalOpened(false)}>Sign In</Button>
                 </DialogActions>
             </DialogContent>
         </Dialog>
     );
 };
 
-export default LogInModal;
+export default SignInModal;

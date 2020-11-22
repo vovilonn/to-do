@@ -21,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
 }));
-const Header = ({ toggleSidebar }) => {
+const Header = ({
+    toggleSidebar,
+    toggleLogInModalStatus,
+    toggleSignInModalStatus,
+}) => {
     const classes = useStyles();
 
     const toggleDrawer = () => (event) => {
@@ -32,6 +36,13 @@ const Header = ({ toggleSidebar }) => {
             return;
         }
         toggleSidebar(true);
+    };
+
+    const toggleLogInModalOpened = (isOpened) => () => {
+        toggleLogInModalStatus(isOpened);
+    };
+    const toggleSignInModalOpened = (isOpened) => () => {
+        toggleSignInModalStatus(isOpened);
     };
 
     return (
@@ -50,10 +61,18 @@ const Header = ({ toggleSidebar }) => {
                     News
                 </Typography>
                 <Box mr={3}>
-                    <Button color="inherit" variant="outlined">
+                    <Button
+                        onClick={toggleLogInModalOpened(true)}
+                        color="inherit"
+                        variant="outlined"
+                    >
                         Log In
                     </Button>
-                    <Button color="secondary" variant="contained">
+                    <Button
+                        onClick={toggleSignInModalOpened(true)}
+                        color="secondary"
+                        variant="contained"
+                    >
                         Sign In
                     </Button>
                 </Box>

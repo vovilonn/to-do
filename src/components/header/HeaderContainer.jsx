@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import Header from "./Header";
-import { toggleSidebarStatus } from "./../../reducers/actions.js";
+import {
+    toggleLogInModalStatus,
+    toggleSignInModalStatus,
+    toggleSidebarStatus,
+} from "../../reducers/actions";
 
 const mapStateToProps = (state) => {
     return {};
@@ -8,6 +12,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        toggleLogInModalStatus: (isOpened) => {
+            dispatch(toggleLogInModalStatus(isOpened));
+        },
+        toggleSignInModalStatus: (isOpened) => {
+            dispatch(toggleSignInModalStatus(isOpened));
+        },
         toggleSidebar: (open) => {
             dispatch(toggleSidebarStatus(open));
         },
