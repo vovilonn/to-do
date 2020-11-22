@@ -69,7 +69,7 @@ export const updateSignInCurrentPasswordText = (text) => {
 
 export const UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT =
     "UPDATE-SIGNIN-CURRENT-REPEAT-PASSWORD-TEXT";
-export const updateSignInCurrentRepeatPasswordText = (text) => {
+export const updateSignInCurrentRepeatedPasswordText = (text) => {
     return {
         type: UPDATE_SIGNIN_CURRENT_USERNAME_TEXT,
         newText: text,

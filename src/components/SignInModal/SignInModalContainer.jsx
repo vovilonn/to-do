@@ -1,5 +1,10 @@
 import { connect } from "react-redux";
-import { toggleSignInModalStatus } from "../../reducers/actions";
+import {
+    toggleSignInModalStatus,
+    updateSignInCurrentUserNameText,
+    updateSignInCurrentPasswordText,
+    updateSignInCurrentRepeatedPasswordText,
+} from "../../reducers/actions";
 import SignInModal from "./SignInModal";
 
 const mapStateToProps = (state) => {
@@ -11,6 +16,15 @@ const mapDispatchToProps = (dispatch) => {
     return {
         toggleModalStatus: (isOpened) => {
             dispatch(toggleSignInModalStatus(isOpened));
+        },
+        updateSignInUserNameText: (newText) => {
+            dispatch(updateSignInCurrentUserNameText(newText));
+        },
+        updateSignInPasswordText: (newText) => {
+            dispatch(updateSignInCurrentPasswordText(newText));
+        },
+        updateSignInRepeatedPassword: (newText) => {
+            dispatch(updateSignInCurrentRepeatedPasswordText(newText));
         },
     };
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import {
     Dialog,
     DialogTitle,
@@ -18,11 +17,30 @@ const useStyles = makeStyles((theme) => {
         },
     };
 });
-const LogInModal = ({ isOpened, toggleModalStatus }) => {
+const LogInModal = ({
+    isOpened,
+    toggleModalStatus,
+    updateLogInCurrentUserNameText,
+    updateLogInCurrentPasswordText,
+    newUserNameText,
+    newPasswordText,
+}) => {
     const classes = useStyles();
 
     const toggleModalOpened = (isOpened) => () => {
         toggleModalStatus(isOpened);
+        updateLogInCurrentUserNameText("");
+        updateLogInCurrentPasswordText("");
+    };
+
+    const updateCurrentUserNameText = (e) => {
+        const newText = e.target.value;
+        updateLogInCurrentUserNameText(newText);
+    };
+
+    const updateCurrentPasswordText = (e) => {
+        const newText = e.target.value;
+        updateLogInCurrentPasswordText(newText);
     };
 
     return (
@@ -43,6 +61,8 @@ const LogInModal = ({ isOpened, toggleModalStatus }) => {
                     fullWidth
                     variant="outlined"
                     className={classes.userNameField}
+                    onChange={updateCurrentUserNameText}
+                    value={newUserNameText}
                 />
                 <TextField
                     margin="dence"
@@ -51,6 +71,8 @@ const LogInModal = ({ isOpened, toggleModalStatus }) => {
                     type="password"
                     fullWidth
                     variant="outlined"
+                    onChange={updateCurrentPasswordText}
+                    value={newPasswordText}
                 />
                 <DialogActions>
                     <Button onClick={toggleModalOpened(false)}>Cancel</Button>

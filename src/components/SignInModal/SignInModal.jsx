@@ -21,11 +21,22 @@ const useStyles = makeStyles((theme) => {
         },
     };
 });
-const SignInModal = ({ isOpened, toggleModalStatus }) => {
+const SignInModal = ({
+    isOpened,
+    toggleModalStatus,
+    updateSignInUserNameText,
+    updateSignInPasswordText,
+    updateSignInRepeatedPassword,
+}) => {
     const classes = useStyles();
 
     const toggleModalOpened = (isOpened) => () => {
         toggleModalStatus(isOpened);
+    };
+
+    const updateUserNameText = (e) => {
+        const newText = e.target.value;
+        updateSignInUserNameText(newText);
     };
 
     return (
@@ -46,6 +57,7 @@ const SignInModal = ({ isOpened, toggleModalStatus }) => {
                     fullWidth
                     variant="outlined"
                     className={classes.userNameField}
+                    onChange={updateUserNameText}
                 />
                 <TextField
                     margin="dence"

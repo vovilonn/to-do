@@ -20,7 +20,7 @@ const initialState = getStateFromDB().accounts || {
     signInModal: {
         currentUserNameText: "",
         currentPasswordText: "",
-        currentRepeatPasswordText: "",
+        currentRepeatedPasswordText: "",
     },
     accounts: [
         {
@@ -36,8 +36,8 @@ const initialState = getStateFromDB().accounts || {
 
 const authReducer = (state = initialState, action) => {
     let newState = { ...state };
-    newState.logInModal = { ...state.logInModal };
-    newState.signInModal = { ...state.signInModal };
+    // newState.logInModal = { ...state.logInModal };
+    // newState.signInModal = { ...state.signInModal };
     switch (action.type) {
         case LOG_IN:
             return newState;
@@ -55,7 +55,7 @@ const authReducer = (state = initialState, action) => {
             return newState;
 
         case UPDATE_LOGIN_CURRENT_PASSWORD_TEXT:
-            newState.signInModal.currentPasswordText = action.newText;
+            newState.logInModal.currentPasswordText = action.newText;
             return newState;
 
         case UPDATE_SIGNIN_CURRENT_USERNAME_TEXT:
@@ -67,7 +67,7 @@ const authReducer = (state = initialState, action) => {
             return newState;
 
         case UPDATE_SIGNIN_CURRENT_REPEAT_PASSWORD_TEXT:
-            newState.signInModal.currentRepeatPasswordText = action.newText;
+            newState.signInModal.currentRepeatedPasswordText = action.newText;
             return newState;
 
         default:
