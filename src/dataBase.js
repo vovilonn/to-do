@@ -6,7 +6,5 @@ export const updateDB = () => {
 };
 
 export const getStateFromDB = () => {
-    return JSON.parse(localStorage.getItem("state"));
+    return JSON.parse(localStorage.getItem("state")) || [];
 };
-
-
